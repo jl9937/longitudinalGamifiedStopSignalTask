@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Mindgames Introduction</title>
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0 0 0 0;
+            padding: 0 0 0 0;
+        }
+
+        canvas {
+            background-color: #000000;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1024px;
+        }
+
+        div {
+            margin: 0 0 0 0;
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1024px;
+        }
+    </style>
+</head>
+<body onload="init()">
+
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <canvas id="game-canvas" width="1024" height="730"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
+    <script src="js/libs/date.js"></script>
+    <script src="js/libs/pixi.js"></script>
+    <script src="js/libs/pixi.input.js"></script>
+    <script src="js/libs/pixi-multistyle-text.js"></script>
+
+    <script src="js/Main.js"></script>
+    <script src="js/ViewManager.js"></script>
+
+    <script src="js/helpers/DBInterface.js"></script>
+    <script src="js/helpers/Staircase.js"></script>
+    <script src="js/helpers/VisabilityMonitor.js"></script>
+    <script src="js/helpers/QuestionnaireFactory.js"></script>
+
+    <script src="js/helpers/InterfaceElements/ClickButton.js"></script>
+    <script src="js/helpers/InterfaceElements/VAS.js"></script>
+    <script src="js/helpers/InterfaceElements/FallingBall.js"></script>
+    <script src="js/helpers/InterfaceElements/Chooser.js"></script>
+
+    <script src="js/views/View.js"></script>
+    <script src="js/views/MainMenu.js"></script>
+    <script src="js/views/History.js"></script>
+    <script src="js/views/Map.js"></script>
+    <script src="js/views/Engine.js"></script>
+    <script src="js/views/GenericScreen.js"></script>
+
+    <script src="js/views/Questionnaires/VASScreen.js"></script>
+    <script src="js/views/Questionnaires/FreeTextScreen.js"></script>
+    <script src="js/views/Questionnaires/ComboBoxScreen.js"></script>
+    <script src="js/views/Questionnaires/NumberChooserScreen.js"></script>
+
+    <script src="js/database_objects/Session.js"></script>
+    <script src="js/database_objects/Trial.js"></script>
+
+
+    <script>
+        function init()
+        {
+            main = new Main();
+        };
+    </script>
+
+
+</body>
+
+</html>

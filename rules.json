@@ -1,0 +1,180 @@
+{
+    "rules": {
+        "Completed": {
+            ".read": "auth != null",
+            "$id": { ".write": true }
+        },
+
+        "Activity": {
+            ".read": "auth != null",
+            "$id": {
+                "$sessionDateNum": {
+                    "$uniqueID": {
+                        ".write": "$id.endsWith(newData.child('id').val()) && $sessionDateNum.matches(/^(\\d{2}-\\d{2}-\\d{4}_\\d+)$/)"
+                    }
+                }
+            }
+        },
+        "Participants": {
+            ".read": true,
+            "$id": {
+                "condition": {
+                    ".write": "!data.exists() || !newData.exists()",
+                    ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3"
+                },
+                "freeze": {
+                    ".write": true,
+                    ".validate": "newData.isBoolean()"
+                },
+                "datetimeRegistered": {
+                    ".write": "!data.exists() || !newData.exists()",
+                    ".validate": "newData.isString()"
+                },
+                "lastSessionCompleted": {
+                    ".write": true,
+                    ".validate": "newData.isString()"
+                },
+                "id": {
+                    ".write": "!data.exists() || !newData.exists()"
+                },
+                "moneyEarned": {
+                    ".write": true,
+                    ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 30"
+                },
+                "sessionsCompleted": {
+                    ".write": true,
+                    ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 14"
+                },
+                "sessionsBegun": {
+                    ".write": true,
+                    ".validate": "newData.isNumber() && newData.val() >= 0"
+                },
+                "highScore": {
+                    ".write": true,
+                    ".validate": "newData.isNumber() && newData.val() >= 0"
+                },
+                "$other": {
+                    ".validate": false
+                }
+            }
+        },
+        "Sessions": {
+            ".read": true,
+            "$id": {
+                "$sessionDateNum": {
+                    ".write": "$id.endsWith(newData.child('id').val()) && $sessionDateNum.matches(/^(\\d{2}-\\d{2}-\\d{4}_\\d+)$/)",
+                    "id": {
+                        ".validate": true
+                    },
+                    "OS": {
+                        ".validate": "newData.isString() && (!data.exists() || !newData.exists())"
+                    },
+                    "dayNum": {
+                        ".validate": "newData.isNumber() && newData.val() >= 0  && (!data.exists() || !newData.exists())"
+                    },
+                    "browser": {
+
+                        ".validate": "newData.isString() && (!data.exists() || !newData.exists())"
+                    },
+                    "sessionNum": {
+
+                        ".validate": "newData.isNumber() && newData.val() >= 0  && (!data.exists() || !newData.exists())"
+                    },
+                    "condition": {
+
+                        ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2  && (!data.exists() || !newData.exists())"
+                    },
+                    "completed": {
+
+                        ".validate": "newData.isBoolean()"
+                    },
+                    "date": {
+
+                        ".validate": "newData.isString()  && (!data.exists() || !newData.exists())"
+                    },
+                    "duration": {
+                        ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())"
+                    },
+                    "levelNum": {
+                        ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())"
+                    },
+                    "levelName": {
+                        ".validate": "newData.isString()  && (!data.exists() || !newData.exists())"
+                    },
+                    "$other": {
+                        ".validate": false
+                    },
+                    "Summary": {
+                        "medianRT": { ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())" },
+                        "SSRT": { ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())" },
+                        "stopAccuracy": { ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())" },
+                        "goAccuracy": { ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())" },
+                        "score": { ".validate": "newData.isNumber()  && (!data.exists() || !newData.exists())" }
+                    }
+                }
+            }
+        },
+        "Trials": {
+            ".read": true,
+            "$id": {
+                "$sessionDateNum": {
+                    "$trialNumber": {
+                        ".write": "(!data.exists() || !newData.exists()) && $id.endsWith(newData.child('id').val())",
+                        ".validate": "$trialNumber.matches(/^\\d+$/)",
+                        "id": { ".validate": true },
+                        "sessionNum": { ".validate": "newData.isNumber()" },
+                        "overallTrialNumber": { ".validate": "newData.isNumber()" },
+                        "blockTrialNumber": { ".validate": "newData.isNumber()" },
+                        "blockNumber": { ".validate": "newData.isNumber()" },
+                        "colour": { ".validate": "newData.isString() && newData.val().matches(/^(Y|B)$/)" },
+                        "stopTrial": { ".validate": "newData.isBoolean()" },
+                        "SSD": { ".validate": "newData.isNumber() && newData.val() >= -1" },
+                        "ITIDuration": { ".validate": "newData.isNumber() && newData.val() >= 500" },
+                        "date": { ".validate": "newData.isString()" },
+                        "dateTime": { ".validate": "newData.isString()" },
+                        "unixTime": { ".validate": true },
+                        "condition": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 2" },
+                        "response": { ".validate": "newData.isString() && newData.val().matches(/^(Y|B|none)$/)" },
+                        "responseTime": { ".validate": "newData.isNumber()" },
+                        "correct": { ".validate": "newData.isBoolean()" },
+                        "staircase": { ".validate": "newData.isString() && newData.val().matches(/^(-1|0|1|2|3)$/)" },
+                        "hiddenStopTrial": { ".validate": "newData.isNumber()" },
+                        "pointsGained": { ".validate": "newData.isNumber()" },
+                        "score": { ".validate": "newData.isNumber()" },
+                        "bonus": { ".validate": "newData.isNumber()" },
+                        "$other": { ".validate": false }
+                    }
+                }
+            }
+        },
+        "Conditions": {
+            ".read": true,
+            ".write": true,
+            "nonGame": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 300"
+            },
+            "points": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 300"
+            },
+            "theme": {
+                ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 300"
+            },
+            "$other": {
+                ".validate": false
+            }
+        },
+
+        "Questionnaire": {
+            ".read": "auth != null",
+            "$id": {
+                "$sessionDateNum": {
+                    "$questionnaire": {
+                        "$question": {
+                            ".write": "(!data.exists() || !newData.exists())"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
