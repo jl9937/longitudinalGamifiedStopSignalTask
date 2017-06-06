@@ -58,3 +58,8 @@ This is the main js file in the project, and handles the setup of everything, be
 * Users on slow or old computers sometimes experienced very slow running of the task. Turning on hardware acceleration in the browser can help this.
 * Having participants type in their Prolific ID day after day can lead to typos, which can be detected fairly easily, but may still cause problems
 * Much of the code is not so pretty, and for that I'm sorry. This was put together fairly quickly, and continues to improve in quality over future iterations.
+
+# Notes 
+* If you reuse this code please let me know at jim.lumsden@bristol.ac.uk 
+* If you reuse this code please attribute me.
+* If you reuse the artwork, please attribute Melissa Groves
