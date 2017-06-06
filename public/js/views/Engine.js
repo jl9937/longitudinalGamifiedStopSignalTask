@@ -33,9 +33,6 @@ Engine.prototype.create = function(stage, db, session)
     //console.log(this.session.levelNum);
 }
 
-//bug sorting animation sometimes doesn't render on chrome Version 50.0.2661.86 (64-bit) (non-game mode)
-//bug check with hardware acceleration off and on on chrome
-
 Engine.prototype.mainLoop = function (speedfactor)
 {
     if (this.stimulusSprite !== undefined)
@@ -406,7 +403,6 @@ Engine.prototype.calculatePointsAndUpdatePointsText = function (trialObject)
         this.bonusGlow.alphaLimit = this.bonusAlphaStep * this.bonusCounter;
         if (this.bonusCounter >= Engine.BONUSSTREAK)
         {
-            //Todo modify bonus strength here
             this.Pbonus = this.Pbonus + 1 ;
             this.playerBonusUpgradeAnimation();
             this.bonusCounter = 0;
