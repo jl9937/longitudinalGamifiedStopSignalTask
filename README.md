@@ -53,7 +53,7 @@ The introduction screen is the landing page which allows participant's to conver
 This is the main js file in the project, and handles the setup of everything, before the main menu screen is created. Here you'll find the functions handling participant login, session creation, asset loading, the basic mainloop, and the schedule creation code (which generates the screens needed for each day). This main loop also hooks into the currentscreen's mainloop via the ViewManager.
 
 # Known Problems
-* Security isn't tight. This has been fixed in latter projects, but I'd recommend moving to the Firebase Auth system if the kind of study you're running supports it. 
+* Security could be tighter. This has been fixed in latter projects, but I'd recommend moving to the Firebase Auth system if the kind of study you're running supports it. 
 * The Schedules are constructed in the bottom of the Main.js file, which is fairly ugly. It probably deserves it's own Class
 * Users on slow or old computers sometimes experienced very slow running of the task. Turning on hardware acceleration in the browser can help this.
 * Having participants type in their Prolific ID day after day can lead to typos, which can be detected fairly easily, but may still cause problems
